@@ -76,7 +76,7 @@ ForEach($server in $settings.servers)
                 $app_id = "313900"
             }
             default {
-                Write-Output "",[ERROR] Invalid value '$game' for seting 'game'. Valid options are: 'ns2', 'ns2beta', 'ns2combat'",""
+                Write-Output "","[ERROR] Invalid value '$game' for seting 'game'. Valid options are: 'ns2', 'ns2beta', 'ns2combat'",""
                 exit
             }
         }
