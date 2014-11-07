@@ -25,11 +25,13 @@ ForEach($server in $settings.servers)
 {
     if (($id -eq -1) -or ($id -eq $server.id))
     {
+        $server_id = $server.id
+
         $server_secrets = $null
 
         ForEach($secret in $secrets.servers)
         {
-            If ($secret.id -eq $id)
+            If ($secret.id -eq $server_id)
             {
                 $server_secrets = $secret
             }
@@ -37,7 +39,7 @@ ForEach($server in $settings.servers)
 
         if ($server_secrets -eq $null)
         {
-            Write-Output "","[ERROR] Could not find secrets for server with id $id. Did you read readme.md?",""
+            Write-Output "","[ERROR] Could not find secrets for server with id $server_id. Did you read readme.md?",""
             exit
         }
 
