@@ -1,1 +1,0 @@
-powershell.exe -File "scripts\Update-Server.ps1" -app "ns2beta"
