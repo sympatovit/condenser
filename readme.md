@@ -63,41 +63,6 @@ Example for the [NS2 Dedicated Server](http://wiki.unknownworlds.com/ns2/Dedicat
 * **arguments**: Arguments to use when launching the app. Names only. Values set in `servers.json`
 * **secrets**: Secrets to use when launching the app. Names only. Values set in `secrets.json`
 
-#### secrets.json ####
-
-This file stores server and app secrets, such as usernames and passwords.
-
-`secrets.json` is listed in .gitignore to avoid saving sensitive data in source control.
-
-Example for one NS2 server, and the NS2 Dedicated Server app:
-
-``` json
-"servers": [
-    {
-        "serverid": 0,
-        "webuser": "myWebUser",
-        "webpassword": "myWebPassword",
-        "betapassword": "",
-        "password": ""
-    }
-],
-"apps": [
-    {
-        "appid": 4940,
-        "steam_username": "mySteamUsername",
-        "steam_password": "mySteamPassword"
-    }
-]
-```
-
-* **servers**: Secrets for each distinct server
- * **serverid**: Corresponds with serverid as defined in `servers.json`
- * Secrets listed will vary by app. This example shows secrets used by ns2, as defined in `apps.json`.
-* **apps**: Secrets for each distinct app
- * **appid**: Corresponds with appid as defined in `apps.json`
- * **steam_username**: Steam account used to install/update the app
- * **steam_password**: Steam password that corresponds with the username above
-
 #### servers.json ####
 
 This file stores the configuration for each of your servers.
@@ -135,6 +100,41 @@ Example for one NS2 server:
 * **arguments**: Arguments as defined in `apps.json`, and their values for this particular server
 * **priority**: Process priority. Integer value from 1 to 6, where 1 is the highest priority
 * **cores**: Array of logical cores to lock the process to. Useful for isolating servers on the same machine
+
+#### secrets.json ####
+
+This file stores server and app secrets, such as usernames and passwords.
+
+`secrets.json` is listed in .gitignore to avoid saving sensitive data in source control.
+
+Example for one NS2 server, and the NS2 Dedicated Server app:
+
+``` json
+"servers": [
+    {
+        "serverid": 0,
+        "webuser": "myWebUser",
+        "webpassword": "myWebPassword",
+        "betapassword": "",
+        "password": ""
+    }
+],
+"apps": [
+    {
+        "appid": 4940,
+        "steam_username": "mySteamUsername",
+        "steam_password": "mySteamPassword"
+    }
+]
+```
+
+* **servers**: Secrets for each distinct server
+ * **serverid**: Corresponds with serverid as defined in `servers.json`
+ * Secrets will vary by app. This example shows secrets used by ns2, as defined in `apps.json`.
+* **apps**: Secrets for each distinct app
+ * **appid**: Corresponds with appid as defined in `apps.json`
+ * **steam_username**: Steam account used to install/update the app
+ * **steam_password**: Steam password that corresponds with the username above
 
 ### Running condenser ###
 
