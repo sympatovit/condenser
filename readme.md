@@ -90,11 +90,11 @@ Example for one NS2 server, and the NS2 Dedicated Server app:
 ]
 ```
 
-* **servers** node: Secrets for each distinct server
+* **servers**: Secrets for each distinct server
  * **serverid**: Corresponds with serverid as defined in `servers.json`
- * Actual secrets listed will vary from app to app. This example shows secrets used by ns2.
-* **apps** node: Secrets for each distinct app
- * **appid**: Corresponds with appid in as defined in `apps.json`
+ * Secrets listed will vary by app. This example shows secrets used by ns2, as defined in `apps.json`.
+* **apps**: Secrets for each distinct app
+ * **appid**: Corresponds with appid as defined in `apps.json`
  * **steam_username**: Steam account used to install/update the app
  * **steam_password**: Steam password that corresponds with the username above
 
