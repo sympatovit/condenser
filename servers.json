@@ -60,4 +60,40 @@
 	}],
 	"priority": 1,
 	"cores": [4,5]
+},
+{
+	"serverid": 3,
+	"appid": 232330,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\css",
+	"arguments": [{
+		"console": "",
+		"game": "cstrike",
+		"sv_pure": 1,
+		"map": "de_dust",
+		"maxplayers": 16,
+		"hostname": "My CS:2 Server",
+		"ip": "",
+		"port": 27045
+	}],
+	"priority": 1,
+	"cores": [6,7]
+},
+{
+	"serverid": 4,
+	"appid": 232250,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\tf2",
+	"arguments": [{
+		"console": "",
+		"game": "tf",
+		"sv_pure": 1,
+		"map": "ctf_2fort",
+		"maxplayers": 16,
+		"hostname": "My TF2 Server",
+		"ip": "",
+		"port": 27055
+	}],
+	"priority": 1,
+	"cores": [6,7]
 }]

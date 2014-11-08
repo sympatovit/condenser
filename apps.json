@@ -69,4 +69,36 @@
 		"webpassword",
 		"password"
 	]
+},
+{
+	"_name": "css",
+	"appid": 232330,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},
+{
+	"_name": "tf2",
+	"appid": 232250,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
 }]

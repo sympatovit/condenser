@@ -13,7 +13,7 @@ condenser also provides a convenient way to store your Steam server configuratio
 ### Quick-start instructions ###
 
 * Edit `apps.json` with configuration for each [app](https://steamdb.info/apps/).
- * Included are examples for NS2, NS2 Beta, and NS2: Combat
+ * Included are examples for CS:S, TF2, NS2, NS2 Beta, and NS2: Combat
 * Edit `servers.json` with your server configuration
  * Included are three example servers
 * Make a copy of `sample.secrets.json` named `secrets.json`
