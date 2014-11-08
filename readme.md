@@ -6,7 +6,7 @@ condenser is a bootstrapper for [Steam](http://www.steampowered.com/) server app
 
 condenser makes it easy to install, configure, launch, and manage Steam application servers.
 
-With condenser, all of your Steam servers are configured in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers from one simple, generic platform.
+With condenser, all of your Steam servers are configured in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers from one common platform.
 
 condenser also provides a convenient way to store your Steam server configuration in source control.
 
