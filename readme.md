@@ -18,7 +18,7 @@ condenser also provides a convenient way to store your Steam server configuratio
  * Included are three example servers
 * Make a copy of `sample.secrets.json` named `secrets.json`
 * Edit `secrets.json` with your secret information
- * Included are example secrets for the three example servers
+ * Included are example secrets for the three example servers and example apps
 * Run `condenser` to install/update all servers
  * On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account
  * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
@@ -60,8 +60,8 @@ Example for the [NS2 Dedicated Server](http://wiki.unknownworlds.com/ns2/Dedicat
 * **_name**: A friendly name for the app. Has no effect on script functionality
 * **appid**: The official Steam appid, available from [steamdb.info](https://steamdb.info/apps/)
 * **exe**: The name of the execuable to run, within the server's path
-* **arguments**: Arguments required when launching this app. Names only. Values set in `servers.json`
-* **secrets**: Secrets required when launching this app. Names only. Values set in `secrets.json`
+* **arguments**: Arguments to use when launching the app. Names only. Values set in `servers.json`
+* **secrets**: Secrets to use when launching the app. Names only. Values set in `secrets.json`
 
 #### secrets.json ####
 
@@ -139,6 +139,9 @@ Example for one NS2 server:
 ### Running condenser ###
 
 When run without any parameters, condenser will install (or, if already installed, update/validate) all of the servers configured in `servers.json`.
+
+On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
+You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
 
 When run with the `-launch` switch, condenser will instead launch all of the servers configured in `servers.json`.
 
