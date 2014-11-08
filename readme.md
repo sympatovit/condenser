@@ -24,34 +24,13 @@ condenser also provides a convenient way to store your Steam server configuratio
  * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
 * Run `condenser -launch` to start all servers
 
-### File information ###
-
-#### condenser.ps1/condenser.cmd ####
-
-condenser.ps1 does the heavy lifting - installing, updating, and launching your servers.
-
-condenser.cmd is just a wrapper for condenser.ps1.
-
-When run without any parameters, condenser will install (or, if already installed, update/validate) all of the servers configured in `servers.json`.
-
-When run with the `-launch` switch, condenser will instead launch all of the servers configured in `servers.json`.
-
-To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
-
-For example:
-
-| command                         | action                     |
-|---------------------------------|----------------------------|
-| `condenser`                     | install/update all servers |
-| `condenser -serverid 2`         | install/update server 2    |
-| `condenser -launch`             | launch all servers         |
-| `condenser -launch -serverid 2` | launch server 2            |
+### Configuring condenser ###
 
 #### apps.json ####
 
-This file defines the apps that condenser supports.
+This file defines apps. Create one entry for each distinct [app](https://steamdb.info/apps/).
 
-Add support for new apps here. Included are definitions for NS2, NS2 Beta, and NS2: Combat.
+Example for the [NS2 Dedicated Server](http://wiki.unknownworlds.com/ns2/Dedicated_Server#Server_Configuration) app:
 
 ``` json
 "_name": "ns2",
@@ -86,9 +65,11 @@ Add support for new apps here. Included are definitions for NS2, NS2 Beta, and N
 
 #### secrets.json ####
 
-This file houses both server and app secrets, such as usernames and passwords.
+This file stores server and app secrets, such as usernames and passwords.
 
 `secrets.json` is listed in .gitignore to avoid saving sensitive data in source control.
+
+Example for one NS2 server, and the NS2 Dedicated Server app:
 
 ``` json
 "servers": [
@@ -119,7 +100,9 @@ This file houses both server and app secrets, such as usernames and passwords.
 
 #### servers.json ####
 
-This file houses the configuration for each of your servers.
+This file stores the configuration for each of your servers.
+
+Example for one NS2 server:
 
 ``` json
 "_name": "ns2",
@@ -152,3 +135,20 @@ This file houses the configuration for each of your servers.
 * **arguments**: Arguments as defined in `apps.json`, and their values for this particular server
 * **priority**: Process priority. Integer value from 1 to 6, where 1 is the highest priority
 * **cores**: Array of logical cores to lock the process to. Useful for isolating servers on the same machine
+
+### Running condenser ###
+
+When run without any parameters, condenser will install (or, if already installed, update/validate) all of the servers configured in `servers.json`.
+
+When run with the `-launch` switch, condenser will instead launch all of the servers configured in `servers.json`.
+
+To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
+
+For example:
+
+| command                         | action                     |
+|---------------------------------|----------------------------|
+| `condenser`                     | install/update all servers |
+| `condenser -serverid 2`         | install/update server 2    |
+| `condenser -launch`             | launch all servers         |
+| `condenser -launch -serverid 2` | launch server 2            |
