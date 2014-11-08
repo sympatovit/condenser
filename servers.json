@@ -1,0 +1,63 @@
+[{
+	"serverid": 0,
+	"appid": 4940,
+	"beta": "",
+	"install_dir": "c:\\ns2bootstrap\\server\\ns2",
+	"arguments": [{
+		"config_path": "c:\\ns2bootstrap\\config\\ns2",
+		"logdir": "c:\\ns2bootstrap\\logs\\ns2",
+		"modstorage": "c:\\ns2bootstrap\\mods\\ns2",
+		"webdomain": "",
+		"name": "My NS2 Server",
+		"ip": "",
+		"port": 27015,
+		"webport": 8081,
+		"map": "ns2_summit",
+		"limit": 16,
+		"mods": "706d242 812f004"
+	}],
+	"priority": 1,
+	"cores": [0,1]
+},
+{
+	"serverid": 1,
+	"appid": 310320,
+	"beta": "testing",
+	"install_dir": "c:\\ns2bootstrap\\server\\ns2beta",
+	"arguments": [{
+		"config_path": "c:\\ns2bootstrap\\config\\ns2beta",
+		"logdir": "c:\\ns2bootstrap\\logs\\ns2beta",
+		"modstorage": "c:\\ns2bootstrap\\mods\\ns2beta",
+		"webdomain": "",
+		"name": "My NS2 Beta Server",
+		"ip": "",
+		"port": 27025,
+		"webport": 8082,
+		"map": "ns2_summit",
+		"limit": 16,
+		"mods": ""
+	}],
+	"priority": 1,
+	"cores": [2,3]
+},
+{
+	"serverid": 2,
+	"appid": 313900,
+	"beta": "",
+	"install_dir": "c:\\ns2bootstrap\\server\\ns2combat",
+	"arguments": [{
+		"config_path": "c:\\ns2bootstrap\\config\\ns2combat",
+		"logdir": "c:\\ns2bootstrap\\logs\\ns2combat",
+		"modstorage": "c:\\ns2bootstrap\\mods\\ns2combat",
+		"webdomain": "",
+		"name": "My NS2 Combat Server",
+		"ip": "",
+		"port": 27035,
+		"webport": 8083,
+		"map": "co_pulse",
+		"limit": 16,
+		"mods": "13f20431"
+	}],
+	"priority": 1,
+	"cores": [4,5]
+}]
