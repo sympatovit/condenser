@@ -47,9 +47,7 @@ For example:
 
 This file defines the apps that condenser supports.
 
-Anyone should be able to add support for new apps.
-
-Included are definitions for NS2, NS2 Beta, and NS2: Combat.
+Add support for new apps here. Included are definitions for NS2, NS2 Beta, and NS2: Combat.
 
 ``` json
 "_name": "ns2",
