@@ -62,17 +62,17 @@ ForEach($server in $servers)
             $steamcmd_root = "$script_path\steamcmd"
             $file_path = "$steamcmd_root\steamcmd.exe"
 
-            If (-not (Test-Path $file_path))
+            $needs_steamcmd = (-not (Test-Path $file_path))
+
+            If ($needs_steamcmd)
             {
-                Write-Output "[WARNING] steamcmd not found at $steamcmd_root. Attempting to download..."
+                Write-Output "[INFO] steamcmd not found at $steamcmd_root. Attempting to download..."
                 $steamcmd = (Get-Item -Path ".\" -Verbose).FullName + "\steamcmd.zip"
                 (New-Object System.Net.WebClient).DownloadFile("http://media.steampowered.com/installer/steamcmd.zip",$steamcmd)
                 [System.Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem") | Out-Null
                 [System.IO.Compression.ZipFile]::ExtractToDirectory($steamcmd, $steamcmd_root)
                 del steamcmd.zip
                 Write-Output "[INFO] Downloaded and extracted steamcmd to $steamcmd_root"
-                Write-Output "","[WARNING] steamcmd will now prompt you for a Steam Guard code","After entering, you must exit and restart this script!"
-                $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
             }
             Else
             {
@@ -93,9 +93,15 @@ ForEach($server in $servers)
 
             $app_name = $app._name
 
+            if ($needs_steamcmd)
+            {
+                Write-Output "","[INFO] steamcmd will now prompt you for a Steam Guard code","Press any key to continue",""
+                $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            }
+
             Write-Output "[INFO] Updating $app_name..."
 
-            $process = Start-Process -NoNewWindow -PassThru -Wait -FilePath $file_path -WorkingDirectory $steamcmd_root -ArgumentList $argument_list
+            Start-Process -NoNewWindow -Wait -FilePath $file_path -WorkingDirectory $steamcmd_root -ArgumentList $argument_list
 
             Write-Output "[INFO] Done updating $app_name"
         }
@@ -107,7 +113,7 @@ ForEach($server in $servers)
 
             If (-not (Test-Path $file_path))
             {
-                Write-Output "","[ERROR] $file_path not found",""
+                Write-Output "","[ERROR] $file_path not found. Try running condenser without the -launch switch",""
                 exit
             }
 

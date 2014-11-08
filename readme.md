@@ -4,9 +4,9 @@ condenser is a bootstrapper for [Steam](http://www.steampowered.com/) server app
 
 ### Why use condenser? ###
 
-condenser makes it easy to install, update, launch, and manage one or more Steam application servers.
+condenser makes it easy to install, configure, launch, and manage one or more Steam application servers.
 
-With condenser, your Steam server configuration is stored in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate an arbitrary number of servers.
+With condenser, your Steam server configuration is stored in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers.
 
 condenser also provides a convenient way to store your Steam server configuration in source control.
 
@@ -16,9 +16,32 @@ condenser also provides a convenient way to store your Steam server configuratio
 * Edit `secrets.json` with your secret information
 * Edit `servers.json` with your server configuration
 * Run `condenser` to install/update all servers
- * On first run, steamcmd will prompt for a Steam Guard code
- * After entering the code, you will need to exit and re-run `condenser`
+ * On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account
+ * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
 * Run `condenser -launch` to start all servers
+
+### File information ###
+
+#### condenser.cmd & condenser.ps1 ####
+
+This does the heavy lifting - installing, updating, and launching your servers.
+
+condenser.cmd is just a wrapper for condenser.ps1.
+
+When run without any parameters, condenser will install (or, if already installed, update/validate) all of the servers configured in `servers.json`.
+
+When run with the `-launch` switch, condenser will instead launch all of the servers configured in `servers.json`.
+
+To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
+
+For example:
+
+| command                         | action                     |
+|---------------------------------|----------------------------|
+| `condenser`                     | install/update all servers |
+| `condenser -serverid 2`         | install/update serverid 2  |
+| `condenser -launch`             | launch all servers         |
+| `condenser -launch -serverid 2` | launch server 2            |
 
 #### apps.json ####
 
@@ -94,11 +117,11 @@ This file houses the configuration for each of your servers.
 "serverid": 0,
 "appid": 4940,
 "beta": "",
-"install_dir": "c:\\ns2bootstrap\\server\\ns2",
+"install_dir": "c:\\condenser\\server\\ns2",
 "arguments": [{
-	"config_path": "c:\\ns2bootstrap\\config\\ns2",
-	"logdir": "c:\\ns2bootstrap\\logs\\ns2",
-	"modstorage": "c:\\ns2bootstrap\\mods\\ns2",
+	"config_path": "c:\\condenser\\config\\ns2",
+	"logdir": "c:\\condenser\\logs\\ns2",
+	"modstorage": "c:\\condenser\\mods\\ns2",
 	"webdomain": "",
 	"name": "My NS2 Server",
 	"ip": "",
