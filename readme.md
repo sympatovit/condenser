@@ -45,7 +45,7 @@ For example:
 
 #### apps.json ####
 
-This file defines the apps that bootstrap supports.
+This file defines the apps that condenser supports.
 
 Included are definitions for NS2, NS2 Beta, and NS2: Combat.
 
@@ -77,8 +77,10 @@ Included are definitions for NS2, NS2 Beta, and NS2: Combat.
 * **_name**: A friendly name for the app. Has no effect on script functionality
 * **appid**: The official Steam appid, available from [steamdb.info](https://steamdb.info/apps/)
 * **exe**: The name of the execuable to run, within the server's path
-* **arguments**: The list of arguments to include when launching servers of this type
-* **secrets**: The list of secrets (not the secrets themselves) to retrieve from `secrets.json` when bootstrapping
+* **arguments**: Arguments required when launching servers of this type. Names only. Values set in `servers.json` 
+ * The actual arguments listed will vary from app to app. This example shows arguments used by ns2.
+* **secrets**: Secrets required when launching servers of this type. Names only. Values set in `secrets.json`
+ * The actual secrets listed will vary from app to app. This example shows secrets used by ns2.
 
 #### secrets.json ####
 
@@ -106,7 +108,12 @@ This file houses both server and app secrets, such as usernames and passwords.
 ```
 
 * **servers** node: Secrets for each distinct server
+ * **serverid**: Corresponds with serverid as defined in `servers.json`
+ * The actual secrets listed will vary from app to app. This example shows secrets used by ns2.
 * **apps** node: Secrets for each distinct Steam app
+ * **appid**: Corresponds with appid in as defined in `apps.json`
+ * **steam_username**: The Steam account used to download the app (some apps required a purchased copy)
+ * **steam_password**: The Steam password that corresponds with the username above
 
 #### servers.json ####
 
@@ -136,10 +143,10 @@ This file houses the configuration for each of your servers.
 ```
 
 * **_name**: A friendly name for the server. Has no effect on script functionality
-* **serverid**: A unique identifer for each server you want to configure. Use whatever value you like
-* **appid**: The appid that corresponds to the application's entry in `apps.json`
+* **serverid**: A unique identifer for each server you want to configure. Corresponds with serverid used by `secrets.json`
+* **appid**: Corresponds to appid defined in `apps.json`
 * **beta**: Beta branch to use when installing/updating the server, if applicable
 * **install_dir**: Location to install server binaries
-* **arguments**: The arguments the correspond to the application's arguments in `apps.json`, and their values for this particular server
+* **arguments**: Arguments that correspond to the arguments defined in `apps.json`, and their values for this particular server
 * **priority**: Process priority. Integer value from 1 to 6, where 1 is the highest priority
 * **cores**: Array of logical cores to lock the process to. Useful for isolating multple servers on the same machine
