@@ -99,7 +99,7 @@ Example for one NS2 server:
 * **install_dir**: Location to install server binaries
 * **arguments**: Arguments as defined in `apps.json`, and their values for this particular server
 * **priority**: Process priority. Integer value from 1 to 6, where 1 is the highest priority
-* **cores**: Array of logical cores to lock the process to. Useful for isolating servers on the same machine
+* **cores**: Array of logical processor cores. Useful for isolating servers on the same machine
 
 #### secrets.json ####
 
@@ -138,12 +138,12 @@ Example for one NS2 server, and the NS2 Dedicated Server app:
 
 ### Running condenser ###
 
-When run without any parameters, condenser installs (or updates) all servers configured in `servers.json`.
+When run without any parameters, condenser installs (or updates) all servers in `servers.json`.
 
 On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
 You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
 
-When run with the `-launch` switch, condenser instead launches all servers configured in `servers.json`.
+When run with the `-launch` switch, condenser instead launches all servers in `servers.json`.
 
 To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
 

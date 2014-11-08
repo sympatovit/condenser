@@ -72,12 +72,12 @@
 		"sv_pure": 1,
 		"map": "de_dust",
 		"maxplayers": 16,
-		"hostname": "My CS:2 Server",
+		"hostname": "My CS:S Server",
 		"ip": "",
 		"port": 27045
 	}],
 	"priority": 1,
-	"cores": [6,7]
+	"cores": [6]
 },
 {
 	"serverid": 4,
@@ -95,5 +95,5 @@
 		"port": 27055
 	}],
 	"priority": 1,
-	"cores": [6,7]
+	"cores": [7]
 }]
