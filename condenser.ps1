@@ -38,7 +38,7 @@ ForEach($server in $servers)
         $server_appid = $server.appid
         $app_secrets = $secrets.apps | Where-Object { $_.appid -eq  $server_appid }
 
-        if ($server_secrets -eq $null)
+        if ($app_secrets -eq $null)
         {
             Write-Output "","[ERROR] Could not find secrets for app with appid $server_appid in secrets.json",""
             exit
