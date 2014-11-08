@@ -6,7 +6,7 @@ condenser is a bootstrapper for [Steam](http://www.steampowered.com/) server app
 
 condenser makes it easy to install, configure, launch, and manage Steam application servers.
 
-With condenser, your Steam server configuration is stored in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers.
+With condenser, all of your Steam servers are configured in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers from one simple, generic platform.
 
 condenser also provides a convenient way to store your Steam server configuration in source control.
 
@@ -22,7 +22,7 @@ condenser also provides a convenient way to store your Steam server configuratio
 
 ### File information ###
 
-#### condenser.cmd/condenser.ps1 ####
+#### condenser.ps1/condenser.cmd ####
 
 condenser.ps1 does the heavy lifting - installing, updating, and launching your servers.
 
@@ -77,10 +77,8 @@ Add support for new apps here. Included are definitions for NS2, NS2 Beta, and N
 * **_name**: A friendly name for the app. Has no effect on script functionality
 * **appid**: The official Steam appid, available from [steamdb.info](https://steamdb.info/apps/)
 * **exe**: The name of the execuable to run, within the server's path
-* **arguments**: Arguments required when launching this app. Names only. Values set in `servers.json` 
- * Actual arguments listed will vary from app to app. This example shows arguments used by ns2.
+* **arguments**: Arguments required when launching this app. Names only. Values set in `servers.json`
 * **secrets**: Secrets required when launching this app. Names only. Values set in `secrets.json`
- * Actual secrets listed will vary from app to app. This example shows secrets used by ns2.
 
 #### secrets.json ####
 
