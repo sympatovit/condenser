@@ -12,9 +12,13 @@ condenser also provides a convenient way to store your Steam server configuratio
 
 ### Quick-start instructions ###
 
+* Edit `apps.json` with configuration for each [app](https://steamdb.info/apps/).
+ * Included are examples for NS2, NS2 Beta, and NS2: Combat
 * Edit `servers.json` with your server configuration
+ * Included are three example servers
 * Make a copy of `sample.secrets.json` named `secrets.json`
 * Edit `secrets.json` with your secret information
+ * Included are example secrets for the three example servers
 * Run `condenser` to install/update all servers
  * On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account
  * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
