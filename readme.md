@@ -105,7 +105,7 @@ Example for one NS2 server:
 
 This file stores server and app secrets, such as usernames and passwords.
 
-`secrets.json` is listed in .gitignore to avoid saving sensitive data in source control.
+It is listed in `.gitignore` to avoid saving sensitive data in source control.
 
 Example for one NS2 server, and the NS2 Dedicated Server app:
 
@@ -138,7 +138,7 @@ Example for one NS2 server, and the NS2 Dedicated Server app:
 
 ### Running condenser ###
 
-When run without any parameters, condenser will install (or, if already installed, update/validate) all of the servers configured in `servers.json`.
+When run without any parameters, condenser will install (or update) all of the servers configured in `servers.json`.
 
 On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
 You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
