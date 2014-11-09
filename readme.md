@@ -152,8 +152,8 @@ Run `condenser` from a command prompt to see the various command line switches.
 
 `-update` will install/update apps for each server defined in _servers.json_
 
-**Note:** When adding a Steam account to _secrets.json_, the first update triggers a [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) e-mail.
-You must enter the code contained in that e-mail when prompted.
+**Note:** When adding a Steam account to _secrets.json_, the first update triggers [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519).
+You will receive an email with a code that you must enter when prompted.
 
 `-launch` will start all servers defined in _servers.json_
 
