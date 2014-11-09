@@ -1,12 +1,12 @@
 # condenser #
 
-condenser is a bootstrapper for [Steam](http://www.steampowered.com/) server applications.
+condenser is a bootstrapper for [Steam dedicated server apps](https://steamdb.info/search/?a=app&q=dedicated+server).
 
-### Why use condenser? ###
+### Why condenser? ###
 
-condenser makes it easy to install, configure, launch, and manage Steam application servers.
+condenser makes it easy to install, configure, and launch dedicated servers.
 
-With condenser, all of your Steam servers are configured in compact, portable json - allowing you to quickly spin up, alter, clone, and migrate any arbitrary number of servers from one common platform.
+With condenser, all of your Steam servers are configured in [JSON](http://en.wikipedia.org/wiki/JSON), allowing you to quickly create any number of servers from one common platform.
 
 condenser also provides a convenient way to store your Steam server configuration in source control.
 
@@ -26,9 +26,9 @@ condenser also provides a convenient way to store your Steam server configuratio
 
 #### apps.json ####
 
-This file defines apps. Create one entry for each distinct [Steam app](https://steamdb.info/apps/).
+This file defines apps. Create one entry for each distinct [app](https://steamdb.info/search/?a=app&q=dedicated+server).
 
-Condenser already includes definitions for the following apps:
+condenser already includes definitions for the following apps:
 * Counter-Strike: Global Offensive
 * Counter-Strike: Source
 * Team Fortress 2
