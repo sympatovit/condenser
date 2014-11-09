@@ -126,7 +126,7 @@ ForEach($server in $servers)
 
             If ($needs_steamcmd)
             {
-                Write-Output "","[INFO] steamcmd will now prompt you for a Steam Guard code","Press any key to continue",""
+                Write-Output "","[INFO] steamcmd may prompt you for a Steam Guard code","Press any key to continue",""
                 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
             }
 
