@@ -2,7 +2,7 @@
 
 condenser is a bootstrapper for installing, configuring, & launching [Steam dedicated server apps](https://steamdb.info/search/?a=app&q=dedicated+server).
 
-To see condenser in action, watch the [intro video](https://www.youtube.com/watch?v=IpwykxX4bCg).
+To see condenser in action, watch the [intro video](http://youtu.be/kErs5-vHXOQ).
 
 ### Why condenser? ###
 
@@ -18,7 +18,6 @@ condenser also provides a convenient way to store your Steam server configuratio
  * Included are many example servers. Remove any that are not needed
 * Make a copy of _sample.secrets.json_ named _secrets.json_
 * Edit _secrets.json_ with secrets for each server and each app
-* Run `powershell -command Unblock-File condenser.ps1` to whitelist condenser
 * Run `condenser -list` to confirm your configuration is valid
 * Run `condenser -update` to install all servers you've defined
  * When adding a Steam account to _secrets.json_, the first update triggers [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519).
