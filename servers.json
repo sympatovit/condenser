@@ -110,29 +110,8 @@
 	"priority": 1,
 	"cores": [5,6]
 },{
-	"_name": "example ns2beta server",
-	"serverid": 6,
-	"appid": 310320,
-	"beta": "testing",
-	"install_dir": "c:\\condenser\\server\\ns2beta",
-	"arguments": [{
-		"config_path": "c:\\condenser\\config\\ns2beta",
-		"logdir": "c:\\condenser\\logs\\ns2beta",
-		"modstorage": "c:\\condenser\\mods\\ns2beta",
-		"webdomain": "",
-		"name": "My NS2 Beta Server",
-		"ip": "",
-		"port": 27065,
-		"webport": 8086,
-		"map": "ns2_summit",
-		"limit": 16,
-		"mods": ""
-	}],
-	"priority": 1,
-	"cores": [6,7]
-},{
 	"_name": "example ns2combat server",
-	"serverid": 7,
+	"serverid": 6,
 	"appid": 313900,
 	"beta": "",
 	"install_dir": "c:\\condenser\\server\\ns2combat",
@@ -143,12 +122,12 @@
 		"webdomain": "",
 		"name": "My NS2 Combat Server",
 		"ip": "",
-		"port": 27075,
-		"webport": 8087,
+		"port": 27065,
+		"webport": 8086,
 		"map": "co_pulse",
 		"limit": 16,
 		"mods": "13f20431"
 	}],
 	"priority": 1,
-	"cores": [7,0]
+	"cores": [6,7]
 }]

@@ -37,7 +37,6 @@ condenser already includes definitions for the following apps:
 * Garrysmod
 * Left 4 Dead 2
 * Natural Select 2
-* Natural Select 2 Beta
 * NS2: Combat
 
 Example for the [NS2 Dedicated Server](http://wiki.unknownworlds.com/ns2/Dedicated_Server#Server_Configuration) app:

@@ -102,30 +102,6 @@
 	]
 },
 {
-	"_name": "ns2beta",
-	"appid": 310320,
-	"exe": "Server.exe",
-	"arguments": [
-		"config_path",
-		"modstorage",
-		"logdir",
-		"ip",
-		"port",
-		"name",
-		"limit",
-		"mods",
-		"map",
-		"webadmin",
-		"webdomain",
-		"webport"
-	],
-	"secrets": [
-		"webuser",
-		"webpassword",
-		"password"
-	]
-},
-{
 	"_name": "ns2combat",
 	"appid": 313900,
 	"exe": "ns2combatserver.exe",
