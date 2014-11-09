@@ -13,15 +13,14 @@ condenser also provides a convenient way to store your Steam server configuratio
 ### Quick-start instructions ###
 
 * Edit `servers.json` with details about each of your servers
- * Included are many example servers - remove these if not needed
+ * Included are many example servers. Remove any that are not needed
 * Make a copy of `sample.secrets.json` named `secrets.json`
 * Edit `secrets.json` with secrets for each server and each app
- * Included are example secrets for the three example servers and example apps
-* Run `condenser -list` to confirm your configuration is correct
-* Run `condenser -update` to install all servers defined in `servers.json`
+* Run `condenser -list` to confirm your configuration is valid
+* Run `condenser -update` to install all servers you've defined
  * On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account
  * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
-* Run `condenser -launch` to start all servers defined in `servers.json`
+* Run `condenser -launch` to start all servers you've defined
 
 ### Configuring condenser ###
 
@@ -147,20 +146,22 @@ Example for one NS2 server, and the NS2 Dedicated Server app:
 
 ### Running condenser ###
 
-Run condenser from a command prompt
+Run `condenser` from a command prompt to see the various command line switches.
 
-On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
-You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
+`-list` will parse _apps.json_, _servers.json_, and _secrets.json_ and report any errors.
 
-`-launch` switch, condenser instead launches all servers in `servers.json`.
+`-update` will install/update apps for each server defined in _servers.json_
 
-To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
+**Note:** The first time you run `-update`, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
+You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail.
 
-| command                         | action                     |
+`-launch` will start all servers defined in _servers.json_
+
+`-serverid #` will restrict your command to only serverid # in _servers.json_
+
+| example                         | action                     |
 |---------------------------------|----------------------------|
-| `condenser -help`               | displays this help dialog  |
-| `condenser -list`               | list all apps and servers  |
-| `condenser -update`             | install/update all servers |
+| `condenser -update`             | update all servers         |
 | `condenser -launch`             | launch all servers         |
-| `condenser -update -serverid #` | install/update server #    |
-| `condenser -launch -serverid #` | launch server #            |
+| `condenser -update -serverid 2` | update only serverid 2     |
+| `condenser -launch -serverid 3` | launch only serverid 3     |
