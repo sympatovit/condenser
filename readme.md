@@ -1,6 +1,6 @@
 # condenser #
 
-condenser is a bootstrapper for [Steam dedicated server apps](https://steamdb.info/search/?a=app&q=dedicated+server).
+condenser is a bootstrapper for installing, configuring, & launching [Steam dedicated server apps](https://steamdb.info/search/?a=app&q=dedicated+server).
 
 ### Why condenser? ###
 
