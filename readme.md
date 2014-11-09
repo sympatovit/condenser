@@ -18,7 +18,7 @@ condenser also provides a convenient way to store your Steam server configuratio
 * Edit _secrets.json_ with secrets for each server and each app
 * Run `condenser -list` to confirm your configuration is valid
 * Run `condenser -update` to install all servers you've defined
- * When adding a Steam account to _secrets.json_, the first `-update` triggers a [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) e-mail.
+ * When adding a Steam account to _secrets.json_, the first update triggers a [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) e-mail.
  * You must enter the code contained in that e-mail when prompted.
 * Run `condenser -launch` to start all servers
 
@@ -152,8 +152,8 @@ Run `condenser` from a command prompt to see the various command line switches.
 
 `-update` will install/update apps for each server defined in _servers.json_
 
-**Note:** If you add credentials to _secrets.json_, the first `-update`, will trigger a [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) e-mail.
-You will be prompted to enter the code contained in that e-mail.
+**Note:** When adding a Steam account to _secrets.json_, the first update triggers a [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) e-mail.
+You must enter the code contained in that e-mail when prompted.
 
 `-launch` will start all servers defined in _servers.json_
 
