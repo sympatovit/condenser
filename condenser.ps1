@@ -1,10 +1,30 @@
 [CmdletBinding()]
 Param(
+    [Switch] $list,
+    [Switch] $update,
     [Switch] $launch,
+    [Switch] $help,
     [Parameter(ValueFromPipelineByPropertyName=$true)] $serverid = $null
 )
 
 $script_path = Split-Path -Parent $MyInvocation.MyCommand.Definition
+
+if ($help -or (-not ($list -or $update -or $launch)))
+{
+    Write-Output "
+See readme.md for more info
+
+| command                       | action                     |
+|-------------------------------|----------------------------|
+| condenser -help               | displays this help dialog  |
+| condenser -list               | list all apps and servers  |
+| condenser -update             | install/update all servers |
+| condenser -launch             | launch all servers         |
+| condenser -update -serverid # | install/update server #    |
+| condenser -launch -serverid # | launch server #            |
+"
+    exit
+}
 
 If (-not (Test-Path "$script_path\secrets.json"))
 {
@@ -22,25 +42,36 @@ If (($serverid -ne $null) -and (($servers | Where-Object { $_.serverid -eq  $ser
     exit
 }
 
+If ($list)
+{
+    $app_list = $apps | Format-Table appid, _name -AutoSize
+    $server_list = @()
+}
+
 ForEach($server in $servers)
 {
-    if (($serverid -eq $null) -or ($serverid -eq $server.serverid))
+    If (($serverid -eq $null) -or ($serverid -eq $server.serverid))
     {
+        If ($list)
+        {
+            $server_list += $server | Select-Object serverid, appid, _name
+        }
+
         $server_id = $server.serverid
         $server_secrets = $secrets.servers | Where-Object { $_.serverid -eq  $server_id }
 
-        if ($server_secrets -eq $null)
+        If ($server_secrets -eq $null)
         {
-            Write-Output "","[ERROR] Could not find secrets for server with serverid $server_id in secrets.json",""
+            Write-Output "","[ERROR] Could not find secrets for serverid $server_id in secrets.json",""
             exit
         }
 
         $server_appid = $server.appid
         $app_secrets = $secrets.apps | Where-Object { $_.appid -eq  $server_appid }
 
-        if ($app_secrets -eq $null)
+        If ($app_secrets -eq $null)
         {
-            Write-Output "","[ERROR] Could not find secrets for app with appid $server_appid in secrets.json",""
+            Write-Output "","[ERROR] Could not find secrets appid $server_appid in secrets.json",""
             exit
         }
 
@@ -48,7 +79,7 @@ ForEach($server in $servers)
         
         If ($app -eq $null)
         {
-            Write-Output "","[ERROR] Could not find appid '$server_appid' in apps.json.",""
+            Write-Output "","[ERROR] Could not find appid $server_appid in apps.json as required by serverid $server_id in servers.json.",""
             exit
         }
 
@@ -57,7 +88,7 @@ ForEach($server in $servers)
         ForEach($argument in $app.arguments) { $arguments[$argument] = $server.arguments.$argument }
         ForEach($secret in $app.secrets) { $arguments[$secret] = $server_secrets.$secret }
 
-        If (-Not $launch)
+        If ((-not $launch) -and (-not $list))
         {
             $steamcmd_root = "$script_path\steamcmd"
             $file_path = "$steamcmd_root\steamcmd.exe"
@@ -86,14 +117,14 @@ ForEach($server in $servers)
             $server_beta = $server.beta
             $server_betapassword = $server_secrets.betapassword
 
-            if ($server_beta -ne "") { $beta = "-beta" } else { $beta = "" }
-            if ($server_betapassword -ne "") { $betapassword = "-betapassword" } else { $betapassword = "" }
+            If ($server_beta -ne "") { $beta = "-beta" } else { $beta = "" }
+            If ($server_betapassword -ne "") { $betapassword = "-betapassword" } else { $betapassword = "" }
 
-            $argument_list = "+login `"$steam_username`" `"$steam_password`" +force_install_dir `"$install_dir`" +app_update ` $server_appid $beta $server_beta $betapassword $server_betapassword validate ` +quit"
+            $argument_list = "+login `"$steam_username`" `"$steam_password`" +force_install_dir `"$install_dir`" +app_update ` $server_appid $beta $server_beta $betapassword $server_betapassword ` +quit"
 
             $app_name = $app._name
 
-            if ($needs_steamcmd)
+            If ($needs_steamcmd)
             {
                 Write-Output "","[INFO] steamcmd will now prompt you for a Steam Guard code","Press any key to continue",""
                 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -105,7 +136,7 @@ ForEach($server in $servers)
 
             Write-Output "[INFO] Done updating $app_name"
         }
-        Else
+        ElseIf (-not $list)
         {
             $install_dir = $server.install_dir
             $exe = $app.exe
@@ -119,16 +150,16 @@ ForEach($server in $servers)
 
             $valid_ips = (gwmi Win32_NetworkAdapterConfiguration | ? { $_.IPAddress -ne $null }).ipaddress
 
-            if (($arguments.ip -eq "") -or ($arguments.ip -eq "0.0.0.0"))
+            If (($arguments.ip -eq "") -or ($arguments.ip -eq "0.0.0.0"))
             {
                 $arguments.ip = $valid_ips[0]
             }
 
-            if ($valid_ips -notcontains $arguments.ip)
+            If ($valid_ips -notcontains $arguments.ip)
             {
                 $ip = $arguments.ip
                 $valid_ips_string = $valid_ips -join ", "
-                Write-Output "","[ERROR] Invalid value '$ip' for argument 'ip'. Valid options are: $valid_ips_string",""
+                Write-Output "","[ERROR] Invalid value `"$ip`" for argument `ip`. Valid options are: $valid_ips_string",""
                 exit
             }
 
@@ -144,7 +175,7 @@ ForEach($server in $servers)
 
             $priority = $server.priority
 
-            switch ($priority)
+            Switch ($priority)
             {
                 6 { $priority = 64 }
                 5 { $priority = 16384 }
@@ -153,14 +184,14 @@ ForEach($server in $servers)
                 2 { $priority = 128 }
                 1 { $priority = 256 }
                 default {
-                    Write-Output "","[ERROR] Invalid value '$priority' for 'priority'. Valid options are: 1, 2, 3, 4, 5, 6",""
+                    Write-Output "","[ERROR] Invalid value $priority for `priority`. Valid options are: 1, 2, 3, 4, 5, 6",""
                     exit
                 }
             }
 
             $affinity = 0;
 
-            foreach($core in $server.cores) { $affinity = $affinity + [math]::pow(2, $core) }
+            foreach($core in $server.cores) { $affinity += [math]::pow(2, $core) }
 
             $affinity = [Int]$affinity
 
@@ -175,4 +206,12 @@ ForEach($server in $servers)
             Write-Output "[INFO] Done launching $server_name"
         }
     }
+}
+
+If ($list)
+{
+    Write-Output "","apps.json"
+    $app_list
+    Write-Output "servers.json"
+    $server_list
 }

@@ -1,4 +1,83 @@
 [{
+	"_name": "cs:go",
+	"appid": 740,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},{
+	"_name": "cs:s",
+	"appid": 232330,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},
+{
+	"_name": "tf2",
+	"appid": 232250,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},
+{
+	"_name": "gmod",
+	"appid": 4020,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},
+{
+	"_name": "l4d2",
+	"appid": 222860,
+	"exe": "srcds.exe",
+	"arguments": [
+		"console",
+		"game",
+		"sv_pure",
+		"map",
+		"maxplayers",
+		"hostname",
+		"ip",
+		"port"
+	],
+	"secrets": [ ]
+},
+{
 	"_name": "ns2",
 	"appid": 4940,
 	"exe": "Server.exe",
@@ -69,36 +148,4 @@
 		"webpassword",
 		"password"
 	]
-},
-{
-	"_name": "css",
-	"appid": 232330,
-	"exe": "srcds.exe",
-	"arguments": [
-		"console",
-		"game",
-		"sv_pure",
-		"map",
-		"maxplayers",
-		"hostname",
-		"ip",
-		"port"
-	],
-	"secrets": [ ]
-},
-{
-	"_name": "tf2",
-	"appid": 232250,
-	"exe": "srcds.exe",
-	"arguments": [
-		"console",
-		"game",
-		"sv_pure",
-		"map",
-		"maxplayers",
-		"hostname",
-		"ip",
-		"port"
-	],
-	"secrets": [ ]
 }]

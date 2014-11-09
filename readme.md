@@ -12,23 +12,32 @@ condenser also provides a convenient way to store your Steam server configuratio
 
 ### Quick-start instructions ###
 
-* Edit `apps.json` with configuration for each [app](https://steamdb.info/apps/).
- * Included are examples for CS:S, TF2, NS2, NS2 Beta, and NS2: Combat
-* Edit `servers.json` with your server configuration
- * Included are three example servers
+* Edit `servers.json` with details about each of your servers
+ * Included are many example servers - remove these if not needed
 * Make a copy of `sample.secrets.json` named `secrets.json`
-* Edit `secrets.json` with your secret information
+* Edit `secrets.json` with secrets for each server and each app
  * Included are example secrets for the three example servers and example apps
-* Run `condenser` to install/update all servers
+* Run `condenser -list` to confirm your configuration is correct
+* Run `condenser -update` to install all servers defined in `servers.json`
  * On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account
  * You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
-* Run `condenser -launch` to start all servers
+* Run `condenser -launch` to start all servers defined in `servers.json`
 
 ### Configuring condenser ###
 
 #### apps.json ####
 
-This file defines apps. Create one entry for each distinct [app](https://steamdb.info/apps/).
+This file defines apps. Create one entry for each distinct [Steam app](https://steamdb.info/apps/).
+
+Condenser already includes definitions for the following apps:
+* Counter-Strike: Global Offensive
+* Counter-Strike: Source
+* Team Fortress 2
+* Garrysmod
+* Left 4 Dead 2
+* Natural Select 2
+* Natural Select 2 Beta
+* NS2: Combat
 
 Example for the [NS2 Dedicated Server](http://wiki.unknownworlds.com/ns2/Dedicated_Server#Server_Configuration) app:
 
@@ -138,20 +147,20 @@ Example for one NS2 server, and the NS2 Dedicated Server app:
 
 ### Running condenser ###
 
-When run without any parameters, condenser installs (or updates) all servers in `servers.json`.
+Run condenser from a command prompt
 
 On first run, [steamcmd](https://developer.valvesoftware.com/wiki/SteamCMD) will trigger an e-mail to your Steam account.
 You will be prompted to enter the [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) code contained in that e-mail
 
-When run with the `-launch` switch, condenser instead launches all servers in `servers.json`.
+`-launch` switch, condenser instead launches all servers in `servers.json`.
 
 To limit your actions to individual servers, run condenser with the `-serverid` parameter, followed by the corresponding serverid from `servers.json`.
 
-For example:
-
 | command                         | action                     |
 |---------------------------------|----------------------------|
-| `condenser`                     | install/update all servers |
-| `condenser -serverid 2`         | install/update server 2    |
+| `condenser -help`               | displays this help dialog  |
+| `condenser -list`               | list all apps and servers  |
+| `condenser -update`             | install/update all servers |
 | `condenser -launch`             | launch all servers         |
-| `condenser -launch -serverid 2` | launch server 2            |
+| `condenser -update -serverid #` | install/update server #    |
+| `condenser -launch -serverid #` | launch server #            |

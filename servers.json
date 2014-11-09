@@ -1,68 +1,24 @@
 [{
+	"_name": "example cs:go server",
 	"serverid": 0,
-	"appid": 4940,
+	"appid": 740,
 	"beta": "",
-	"install_dir": "c:\\condenser\\server\\ns2",
+	"install_dir": "c:\\condenser\\server\\csgo",
 	"arguments": [{
-		"config_path": "c:\\condenser\\config\\ns2",
-		"logdir": "c:\\condenser\\logs\\ns2",
-		"modstorage": "c:\\condenser\\mods\\ns2",
-		"webdomain": "",
-		"name": "My NS2 Server",
+		"console": "",
+		"game": "csgo",
+		"sv_pure": 1,
+		"map": "de_dust2",
+		"maxplayers": 16,
+		"hostname": "My CS:GO Server",
 		"ip": "",
-		"port": 27015,
-		"webport": 8081,
-		"map": "ns2_summit",
-		"limit": 16,
-		"mods": "706d242 812f004"
+		"port": 27005
 	}],
 	"priority": 1,
 	"cores": [0,1]
-},
-{
+},{
+	"_name": "example cs:s server",
 	"serverid": 1,
-	"appid": 310320,
-	"beta": "testing",
-	"install_dir": "c:\\condenser\\server\\ns2beta",
-	"arguments": [{
-		"config_path": "c:\\condenser\\config\\ns2beta",
-		"logdir": "c:\\condenser\\logs\\ns2beta",
-		"modstorage": "c:\\condenser\\mods\\ns2beta",
-		"webdomain": "",
-		"name": "My NS2 Beta Server",
-		"ip": "",
-		"port": 27025,
-		"webport": 8082,
-		"map": "ns2_summit",
-		"limit": 16,
-		"mods": ""
-	}],
-	"priority": 1,
-	"cores": [2,3]
-},
-{
-	"serverid": 2,
-	"appid": 313900,
-	"beta": "",
-	"install_dir": "c:\\condenser\\server\\ns2combat",
-	"arguments": [{
-		"config_path": "c:\\condenser\\config\\ns2combat",
-		"logdir": "c:\\condenser\\logs\\ns2combat",
-		"modstorage": "c:\\condenser\\mods\\ns2combat",
-		"webdomain": "",
-		"name": "My NS2 Combat Server",
-		"ip": "",
-		"port": 27035,
-		"webport": 8083,
-		"map": "co_pulse",
-		"limit": 16,
-		"mods": "13f20431"
-	}],
-	"priority": 1,
-	"cores": [4,5]
-},
-{
-	"serverid": 3,
 	"appid": 232330,
 	"beta": "",
 	"install_dir": "c:\\condenser\\server\\css",
@@ -74,13 +30,13 @@
 		"maxplayers": 16,
 		"hostname": "My CS:S Server",
 		"ip": "",
-		"port": 27045
+		"port": 27015
 	}],
 	"priority": 1,
-	"cores": [6]
-},
-{
-	"serverid": 4,
+	"cores": [1,2]
+},{
+	"_name": "example tf2 server",
+	"serverid": 2,
 	"appid": 232250,
 	"beta": "",
 	"install_dir": "c:\\condenser\\server\\tf2",
@@ -92,8 +48,107 @@
 		"maxplayers": 16,
 		"hostname": "My TF2 Server",
 		"ip": "",
-		"port": 27055
+		"port": 27025
 	}],
 	"priority": 1,
-	"cores": [7]
+	"cores": [2,3]
+},{
+	"_name": "example gmod server",
+	"serverid": 3,
+	"appid": 4020,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\gmod",
+	"arguments": [{
+		"console": "",
+		"game": "garrysmod",
+		"sv_pure": 1,
+		"map": "gm_construct",
+		"maxplayers": 16,
+		"hostname": "My GarrysMod Server",
+		"ip": "",
+		"port": 27035
+	}],
+	"priority": 1,
+	"cores": [3,4]
+},{
+	"_name": "example l4d2 server",
+	"serverid": 4,
+	"appid": 222860,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\l4d2",
+	"arguments": [{
+		"console": "",
+		"game": "left4dead2",
+		"sv_pure": 1,
+		"map": "c5m1_waterfront",
+		"maxplayers": 8,
+		"hostname": "My Left4Dead 2 Server",
+		"ip": "",
+		"port": 27045
+	}],
+	"priority": 1,
+	"cores": [4,5]
+},{
+	"_name": "example ns2 server",
+	"serverid": 5,
+	"appid": 4940,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\ns2",
+	"arguments": [{
+		"config_path": "c:\\condenser\\config\\ns2",
+		"logdir": "c:\\condenser\\logs\\ns2",
+		"modstorage": "c:\\condenser\\mods\\ns2",
+		"webdomain": "",
+		"name": "My NS2 Server",
+		"ip": "",
+		"port": 27055,
+		"webport": 8085,
+		"map": "ns2_summit",
+		"limit": 16,
+		"mods": "706d242 812f004"
+	}],
+	"priority": 1,
+	"cores": [5,6]
+},{
+	"_name": "example ns2beta server",
+	"serverid": 6,
+	"appid": 310320,
+	"beta": "testing",
+	"install_dir": "c:\\condenser\\server\\ns2beta",
+	"arguments": [{
+		"config_path": "c:\\condenser\\config\\ns2beta",
+		"logdir": "c:\\condenser\\logs\\ns2beta",
+		"modstorage": "c:\\condenser\\mods\\ns2beta",
+		"webdomain": "",
+		"name": "My NS2 Beta Server",
+		"ip": "",
+		"port": 27065,
+		"webport": 8086,
+		"map": "ns2_summit",
+		"limit": 16,
+		"mods": ""
+	}],
+	"priority": 1,
+	"cores": [6,7]
+},{
+	"_name": "example ns2combat server",
+	"serverid": 7,
+	"appid": 313900,
+	"beta": "",
+	"install_dir": "c:\\condenser\\server\\ns2combat",
+	"arguments": [{
+		"config_path": "c:\\condenser\\config\\ns2combat",
+		"logdir": "c:\\condenser\\logs\\ns2combat",
+		"modstorage": "c:\\condenser\\mods\\ns2combat",
+		"webdomain": "",
+		"name": "My NS2 Combat Server",
+		"ip": "",
+		"port": 27075,
+		"webport": 8087,
+		"map": "co_pulse",
+		"limit": 16,
+		"mods": "13f20431"
+	}],
+	"priority": 1,
+	"cores": [7,0]
 }]
