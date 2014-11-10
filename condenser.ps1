@@ -144,7 +144,7 @@ ForEach($server in $servers)
 
             If (-not (Test-Path $file_path))
             {
-                Write-Output "","[ERROR] $file_path not found. Try running condenser without the -launch switch",""
+                Write-Output "","[ERROR] $file_path not found. Ensure `"condenser -update`" runs successfully",""
                 exit
             }
 
@@ -159,7 +159,7 @@ ForEach($server in $servers)
             {
                 $ip = $arguments.ip
                 $valid_ips_string = $valid_ips -join ", "
-                Write-Output "","[ERROR] Invalid value `"$ip`" for argument `ip`. Valid options are: $valid_ips_string",""
+                Write-Output "","[ERROR] Invalid ip `"$ip`" for serverid $server_id in servers.json.","Valid options are: $valid_ips_string",""
                 exit
             }
 
@@ -184,14 +184,30 @@ ForEach($server in $servers)
                 2 { $priority = 128 }
                 1 { $priority = 256 }
                 default {
-                    Write-Output "","[ERROR] Invalid value $priority for `priority`. Valid options are: 1, 2, 3, 4, 5, 6",""
+                    Write-Output "","[ERROR] Invalid priority $priority for serverid $server_id in servers.json.","Valid options are: 1-6",""
                     exit
                 }
             }
 
-            $affinity = 0;
+            $affinity = 0
+            $used_cores = @()
 
-            foreach($core in $server.cores) { $affinity += [math]::pow(2, $core) }
+            $logical_cores = (Get-WmiObject -Class win32_processor | ForEach { $_.NumberOfLogicalProcessors }) - 1
+
+            foreach($core in $server.cores)
+            {
+                If (($core -lt 0) -or ($core -gt $logical_cores))
+                {
+                    Write-Output "","[ERROR] Invalid core $core for serverid $server_id in servers.json.","Valid options are: 0-$logical_cores",""
+                    exit
+                }
+
+                If ($used_cores -notcontains $core)
+                {
+                    $used_cores += $core
+                    $affinity += [math]::pow(2, $core)
+                }
+            }
 
             $affinity = [Int]$affinity
 
