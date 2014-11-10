@@ -88,7 +88,7 @@ ForEach($server in $servers)
         ForEach($argument in $app.arguments) { $arguments[$argument] = $server.arguments.$argument }
         ForEach($secret in $app.secrets) { $arguments[$secret] = $server_secrets.$secret }
 
-        If ((-not $launch) -and (-not $list))
+        If ($update)
         {
             $steamcmd_root = "$script_path\steamcmd"
             $file_path = "$steamcmd_root\steamcmd.exe"
@@ -136,7 +136,8 @@ ForEach($server in $servers)
 
             Write-Output "[INFO] Done updating $app_name"
         }
-        ElseIf (-not $list)
+        
+        If ($launch)
         {
             $install_dir = $server.install_dir
             $exe = $app.exe
