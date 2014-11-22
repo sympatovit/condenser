@@ -9,15 +9,15 @@ Param(
 
 if ($PSVersionTable -eq $null)
 {
-    Write-Output "","[ERROR] Please upgrade to Powershell v4.0 or newer",""
+    Write-Output "","[ERROR] Please upgrade to Powershell v3.0 or newer",""
     exit
 }
 
 $ps_major_version = ($PSVersionTable.PSVersion | Select-Object Major).Major
 
-if ($ps_major_version -lt 4)
+if ($ps_major_version -lt 3)
 {
-    Write-Output "","[ERROR] Please upgrade to Powershell v4.0 or newer",""
+    Write-Output "","[ERROR] Please upgrade to Powershell v3.0 or newer",""
     exit
 }
 
