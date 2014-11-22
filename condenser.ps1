@@ -90,7 +90,7 @@ ForEach($server in $servers)
 
         If ($update)
         {
-            $steamcmd_root = "$script_path\steamcmd"
+            $steamcmd_root = "c:\steamcmd"
             $file_path = "$steamcmd_root\steamcmd.exe"
 
             $needs_steamcmd = (-not (Test-Path $file_path))
