@@ -7,6 +7,20 @@ Param(
     [Parameter(ValueFromPipelineByPropertyName=$true)] $serverid = $null
 )
 
+if ($PSVersionTable -eq $null)
+{
+    Write-Output "","[ERROR] Please upgrade to Powershell v4.0 or newer",""
+    exit
+}
+
+$ps_major_version = ($PSVersionTable.PSVersion | Select-Object Major).Major
+
+if ($ps_major_version -lt 4)
+{
+    Write-Output "","[ERROR] Please upgrade to Powershell v4.0 or newer",""
+    exit
+}
+
 $script_path = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 if ($help -or (-not ($list -or $update -or $launch)))
