@@ -131,10 +131,18 @@ ForEach($server in $servers)
             $server_beta = $server.beta
             $server_betapassword = $server_secrets.betapassword
 
-            If ($server_beta -ne "") { $beta = "-beta" } else { $beta = "" }
-            If ($server_betapassword -ne "") { $betapassword = "-betapassword" } else { $betapassword = "" }
+            If($server_beta -and $server_beta -ne ""){
+                $beta = "-beta $server_beta"
+                If($server_betapassword -ne ""){
+                    $beta = $beta + " -betapassword $server_betapassword" 
+                }
+            } else {
+                $beta = ""
+            }
 
-            $argument_list = "+login `"$steam_username`" `"$steam_password`" +force_install_dir `"$install_dir`" +app_update ` $server_appid $beta $server_beta $betapassword $server_betapassword ` +quit"
+            $argument_list = "+login `"$steam_username`" `"$steam_password`" +force_install_dir `"$install_dir`" +app_update ` $server_appid $beta ` +quit"
+
+            Write-Output "","[INFO] argumentlist:","$argument_list",""
 
             $app_name = $app._name
 
@@ -165,8 +173,9 @@ ForEach($server in $servers)
 
             $valid_ips = (gwmi Win32_NetworkAdapterConfiguration | ? { $_.IPAddress -ne $null }).ipaddress
 
-            If (($arguments.ip -eq "") -or ($arguments.ip -eq "0.0.0.0"))
+            If (-not $arguments.ip -or ($arguments.ip -eq "") -or ($arguments.ip -eq "0.0.0.0"))
             {
+                Write-Output "[HINT] No ip specified, using $valid_ips[0]"
                 $arguments.ip = $valid_ips[0]
             }
 
@@ -198,9 +207,9 @@ ForEach($server in $servers)
                 3 { $priority = 32768 }
                 2 { $priority = 128 }
                 1 { $priority = 256 }
-                default {
-                    Write-Output "","[ERROR] Invalid priority $priority for serverid $server_id in servers.json.","Valid options are: 1-6",""
-                    exit
+                default {                    
+                    Write-Output "[HINT] No priority specified, using highest"
+                    $priority = 256
                 }
             }
 
@@ -209,20 +218,32 @@ ForEach($server in $servers)
 
             $logical_cores = (Get-WmiObject -Class win32_processor | ForEach { $_.NumberOfLogicalProcessors }) - 1
 
-            foreach($core in $server.cores)
-            {
-                If (($core -lt 0) -or ($core -gt $logical_cores))
-                {
-                    Write-Output "","[ERROR] Invalid core $core for serverid $server_id in servers.json.","Valid options are: 0-$logical_cores",""
-                    exit
-                }
+            $actual_core_count = $logical_cores + 1
 
-                If ($used_cores -notcontains $core)
+            If($server.cores){
+                foreach($core in $server.cores)
                 {
-                    $used_cores += $core
-                    $affinity += [math]::pow(2, $core)
+                    If (($core -lt 0) -or ($core -gt $logical_cores))
+                    {
+                        Write-Output "","[ERROR] Invalid core $core for serverid $server_id in servers.json.","Valid options are: 0-$logical_cores",""
+                        exit
+                    }
+
+                    If ($used_cores -notcontains $core)
+                    {
+                        $used_cores += $core
+                        $affinity += [math]::pow(2, $core)
+                    }
+                }
+            } else {
+                Write-Output "[HINT] No cores specified, using all"
+                $i = 0
+                while($i -lt $actual_core_count){
+                    $affinity += [math]::pow(2, $i)
+                    $i = $i + 1
                 }
             }
+            Write-Output "[INFO] Logical Cores: $actual_core_count"
 
             $affinity = [Int]$affinity
 
